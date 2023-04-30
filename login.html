@@ -1,151 +1,50 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>लॉगिन</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-    <link rel="stylesheet" href="style.css">
-
-    <link rel="stylesheet" href="login.css">
+	<title>लॉगिन</title>
+	<link rel="stylesheet" type="text/css" href="assets/login.css">
+	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
-<style>
+<body background="assets/crop.jpg">
+	<div class="main">
+        
+        <div style="font-size: 30px; text-decoration: none;">
+            <a style="color:blue; text-decoration: none;" href="home.html"><span style="size: 400px;text-decoration: none;">&#8592; पहिल्या पानावर्ती</span></a>
+        </div>
+		<input type="checkbox" id="chk" aria-hidden="true">
 
-     a{
-        color: black;
-    }
-    a:hover{
-        color: orangered;
-    }
-</style>
-<body>
-        <div id="header" ></div>
+			<div class="signup">
+                
+				<form action="" method="post"> 
+					<label for="chk" aria-hidden="true">रजिस्टर</label>
+					<input type="text" name="name" placeholder="संपूर्ण नाव" required="">
+                    <input type="text" name="village" placeholder="गावाचे नाव" required="">
+					<input type="number" name="mo_no" placeholder="मोबाईल नंम्बर" required="">
+					<input type="password" name="pass" placeholder="पासवर्ड टाका" required="">
+					<button onclick="popUp()" id="pop">रजिस्टर</button>
+					<script>
+						function popUp(){
+							swal("यशस्वीरित्या नोंदणी झाली!!!", "आपल्यास संपर्क करण्यात येईल!", "success");
+						}
+					</script>
+				</form>
+			</div>
 
-        <div class="overlay">
-            <!-- LOGN IN FORM by Omar Dsoky -->
-            <form>
-               <!--   con = Container  for items in the form-->
-               <div class="con">
-               <!--     Start  header Content  -->
-               <header class="head-form">
-                  <h2>Log In</h2>
-                  <!--     A welcome message or an explanation of the login form -->
-                  <p>login here using your username and password</p>
-               </header>
-               <!--     End  header Content  -->
-               <br>
-               <div class="field-set">
-                 
-                  <!--   user name -->
-                     <span class="input-item">
-                       <i class="fa fa-user-circle"></i>
-                     </span>
-                    <!--   user name Input-->
-                     <input class="form-input" id="txt-input" type="text" placeholder="@UserName" required>
-                 
-                  <br>
-                 
-                       <!--   Password -->
-                 
-                  <span class="input-item">
-                    <i class="fa fa-key"></i>
-                   </span>
-                  <!--   Password Input-->
-                  <input class="form-input" type="password" placeholder="Password" id="pwd"  name="password" required>
-                 
-            <!--      Show/hide password  -->
-                 <span>
-                    <i class="fa fa-eye" aria-hidden="true"  type="button" id="eye"></i>
-                 </span>
-                 
-                 
-                  <br>
-            <!--        buttons -->
-            <!--      button LogIn -->
-                  <button class="log-in" id="logbtn"> Log In </button>
-               </div>
-              
-            <!--   other buttons -->
-               <div class="other">
-            <!--      Forgot Password button-->
-                  <button class="btn submits frgt-pass">Forgot Password</button>
-            <!--     Sign Up button -->
-                  <button class="btn submits sign-up"> <a href="./signup.html"> Sign Up </a>
-            <!--         Sign Up font icon -->
-                  <i class="fa fa-user-plus" aria-hidden="true"></i>
-                  </button>
-            <!--      End Other the Division -->
-               </div>
-                 
-            <!--   End Conrainer  -->
-              </div>
-              
-              <!-- End Form -->
-            </form>
-            </div>
-  
+			<div class="login">
+				<form action="" method="post">
+					<label for="chk" aria-hidden="true">लॉगिन</label>
+					<input type="number" name="username" placeholder=" मोबाईल नंम्बर" required="">
+					<input type="password" name="password" placeholder="पासवर्ड टाका" required="">
+					<button onclick="popUp()" id="pop">लॉगिन</button>
+<!-- 					<script>
+						function popUp(){
+							swal("यशस्वीरित्या लॉगिन झाले!!!", "", "success");
+						}
+					</script> -->
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>
-<script type="module">
-
-import navbar from './components/navbar.js';
-let header = document.getElementById('header');
-header.innerHTML = navbar();
-</script>
-
-<script>
-function show() {
-    var p = document.getElementById('pwd');
-    p.setAttribute('type', 'text');
-}
-
-function hide() {
-    var p = document.getElementById('pwd');
-    p.setAttribute('type', 'password');
-}
-
-var pwShown = 0;
-
-document.getElementById("eye").addEventListener("click", function () {
-    if (pwShown == 0) {
-        pwShown = 1;
-        show();
-    } else {
-        pwShown = 0;
-        hide();
-    }
-}, false);
-// -------------------- sign up button -------------------------
-// ------------------------------sign up button---------------------------------
-var signArr = JSON.parse(localStorage.getItem('register'));
-document.getElementById('logbtn').addEventListener('click', function(e){
-    e.preventDefault();
-    let username = document.getElementById('txt-input').value;
-    let password = document.getElementById('pwd').value;
-    flag = false;
-    for(let i = 0; i < signArr.length; i++){
-        if(username == signArr[i].username && password == signArr[i].password){
-            flag = true;
-            break;
-
-        }else{
-            flag = false;
-
-        }
-    }
-    if(flag==true){
-        alert('Welcome ' + username);
-            window.location.href = 'index.html';
-    }
-    else{
-        alert('Invalid username or password');
-    }
-})
-
-
-
-
-</script>
-
